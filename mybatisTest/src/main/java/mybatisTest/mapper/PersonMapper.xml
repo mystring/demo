@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatisTest.mapper.PersonMapper">
+<resultMap type="mybatisTest.domain.Person" id="personResult" >
+	<result column="id" property="id" />
+	<result column="name" property="name" javaType="String" jdbcType="VARCHAR"/>
+	<result column="age" property="age" />
+</resultMap>
+	<select id="selectPerson4" parameterType="mybatisTest.domain.Person" resultType="mybatisTest.domain.Person">
+		select * from person where id=#{id}
+	</select>
+	<select id="selectPerson5" parameterType="mybatisTest.domain.Person" resultMap ="personResult">
+		select * from person where id=#{id}
+	</select>
+	<update id="updatePerson" parameterType="Person" >
+		update person set id=id,name=#{name} where id=#{id}
+	</update>
+	<insert id="insertPerson" parameterType="Person" useGeneratedKeys="true" keyProperty="id">
+		insert into Person (id,name,age) values(#{id},#{name},#{age})
+	</insert>
+</mapper>
