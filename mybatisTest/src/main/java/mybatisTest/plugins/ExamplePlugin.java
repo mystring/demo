@@ -9,8 +9,10 @@ import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
+
 /**
  * mybatis插件拦截器
+ * 
  * @author luwz3
  *
  */
@@ -19,7 +21,7 @@ public class ExamplePlugin implements Interceptor {
 
 	public Object intercept(Invocation invocation) throws Throwable {
 		System.out.println(invocation);
- 		return invocation.proceed();
+		return invocation.proceed();
 	}
 
 	public Object plugin(Object target) {
@@ -27,6 +29,6 @@ public class ExamplePlugin implements Interceptor {
 	}
 
 	public void setProperties(Properties properties) {
- 	}
+	}
 
 }
