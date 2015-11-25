@@ -20,8 +20,7 @@ import org.apache.ibatis.plugin.Signature;
 public class ExamplePlugin implements Interceptor {
 
 	public Object intercept(Invocation invocation) throws Throwable {
-		System.out.println(invocation);
-		return invocation.proceed();
+ 		return invocation.proceed();
 	}
 
 	public Object plugin(Object target) {

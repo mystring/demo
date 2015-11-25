@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import mybatisTest.domain.Group;
 import mybatisTest.domain.Person;
 import mybatisTest.mapper.PersonMapper;
 
@@ -131,6 +132,40 @@ public class Main {
 		p.setAge(22);
 		PersonMapper pm=session.getMapper(PersonMapper.class);
 		pm.insertPerson(p);
+ 		 
+	}
+	@Test
+	public void selectPersonGroup() throws IOException{
+		String resource = "config/configuration.xml";
+		Reader reader = Resources.getResourceAsReader(resource);
+		SqlSessionFactory sqlSerssionFactory = new SqlSessionFactoryBuilder().build(reader);
+		SqlSession session = sqlSerssionFactory.openSession();
+		PersonMapper pm=session.getMapper(PersonMapper.class);
+		List<Person> pls =pm.selectPersonGroup(null);
+		for(Person tmp:pls){
+			System.out.println(tmp);
+		}
+		/*Group g=new Group();
+		g.setName("test1");
+		PersonMapper pm=session.getMapper(PersonMapper.class);
+		pm.insertGroup(g);*/	 
+	}
+	/**
+	 * 用xml构建
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void testInsert1() throws IOException {
+		String resource = "config/configuration.xml";
+		Reader reader = Resources.getResourceAsReader(resource);
+		SqlSessionFactory sqlSerssionFactory = new SqlSessionFactoryBuilder().build(reader);
+		SqlSession session = sqlSerssionFactory.openSession();
+		Person p = new Person();
+		p.setName("lise");
+		p.setAge(22);
+		PersonMapper pm=session.getMapper(PersonMapper.class);
+		pm.insertPerson1(p);
  		 
 	}
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
